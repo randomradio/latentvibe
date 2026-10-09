@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101c20">
+  <meta name="description" content="Latent Vibe is an independent product studio for ideas, writing, and useful software.">
+  <title>Latent Vibe — Independent product studio</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101c20'/%3E%3Cpath d='M14 14v36h18M30 14l10 36 10-36' fill='none' stroke='%23d8f4a1' stroke-width='7' stroke-linecap='square'/%3E%3C/svg%3E">
+  <style>
+    :root { color-scheme: light; --ink: #101c20; --paper: #f5f7f2; --line: #cad0ca; --soft: #58645f; --accent: #d8f4a1; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid #538044; outline-offset: 4px; }
+    .wrap { width: min(1200px, calc(100% - 64px)); margin: 0 auto; }
+    .topbar { border-bottom: 1px solid var(--line); }
+    .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 84px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 750; letter-spacing: -.025em; }
+    .mark { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 50%; background: var(--ink); color: var(--accent); font-family: Georgia, serif; font-size: 20px; font-style: italic; }
+    nav { display: flex; flex-wrap: wrap; gap: clamp(16px, 3vw, 40px); font-size: .92rem; }
+    nav a { text-decoration: none; }
+    nav a:hover, .text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .hero { padding: clamp(72px, 11vw, 160px) 0 100px; }
+    .eyebrow, .section-number, .domain { font-size: .77rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; }
+    .eyebrow::before { content: ""; width: 30px; height: 2px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: -.055em; }
+    h1 { max-width: 1000px; margin: 36px 0 32px; font-size: clamp(4.2rem, 10.5vw, 9.3rem); line-height: .91; }
+    h1 em { color: #4d6d56; font-weight: 400; }
+    .hero-bottom { display: flex; align-items: end; justify-content: space-between; gap: 32px; }
+    .hero-bottom p { max-width: 570px; margin: 0; font-size: clamp(1.16rem, 2vw, 1.48rem); line-height: 1.45; }
+    .hero-symbol { flex: none; width: 72px; height: 72px; border: 1px solid var(--ink); border-radius: 50%; display: grid; place-items: center; font-size: 2.2rem; transform: rotate(-45deg); }
+    .band { background: var(--ink); color: var(--paper); padding: 26px 0; overflow: hidden; }
+    .band .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .band span:first-child { font-family: Georgia, serif; font-size: clamp(1.1rem, 2.3vw, 1.6rem); font-style: italic; }
+    .band span:last-child { color: var(--accent); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; }
+    section { scroll-margin-top: 24px; }
+    .section { padding: 100px 0; border-bottom: 1px solid var(--line); }
+    .section-heading { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: start; margin-bottom: 52px; }
+    h2 { margin: 0; font-size: clamp(3rem, 6.5vw, 6rem); line-height: 1; }
+    .section-intro { max-width: 560px; font-size: 1.17rem; color: var(--soft); }
+    .project { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; min-height: 290px; background: var(--accent); padding: clamp(28px, 4vw, 54px); text-decoration: none; transition: background .2s ease, transform .2s ease; }
+    .project:hover { background: #c8ed8a; transform: translateY(-3px); }
+    .project-label { display: flex; flex-direction: column; justify-content: space-between; align-items: start; }
+    .project-label .number { font-family: Georgia, serif; font-size: 5rem; line-height: 1; }
+    .project h3 { max-width: 690px; margin: 0 0 18px; font-family: Georgia, serif; font-weight: 400; font-size: clamp(2.5rem, 5vw, 5rem); letter-spacing: -.055em; line-height: 1; }
+    .project p { max-width: 560px; margin: 0; font-size: 1.08rem; }
+    .project .domain { align-self: end; padding-top: 20px; }
+    .writing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .writing-card { min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--line); padding: clamp(26px, 3vw, 40px); }
+    .writing-card h3 { margin: 0 0 12px; font-family: Georgia, serif; font-weight: 400; font-size: 2.45rem; letter-spacing: -.045em; }
+    .writing-card p { max-width: 370px; margin: 0; color: var(--soft); }
+    .writing-card .status { font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .11em; }
+    footer { padding: 42px 0 55px; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 24px; }
+    footer p { margin: 0; color: var(--soft); font-size: .9rem; }
+    @media (max-width: 700px) {
+      .wrap { width: min(100% - 36px, 1200px); }
+      .topbar .wrap { align-items: start; flex-direction: column; justify-content: center; padding: 20px 0; gap: 14px; }
+      nav { gap: 18px; }
+      .hero { padding: 78px 0 72px; }
+      h1 { font-size: clamp(3.6rem, 15vw, 6.2rem); }
+      .hero-symbol { display: none; }
+      .band .wrap { align-items: start; flex-direction: column; gap: 6px; }
+      .section { padding: 72px 0; }
+      .section-heading, .project { grid-template-columns: 1fr; gap: 22px; }
+      .section-heading { margin-bottom: 32px; }
+      .project { min-height: 0; }
+      .project-label { flex-direction: row; align-items: center; }
+      .project-label .number { font-size: 3rem; }
+      .writing-grid { grid-template-columns: 1fr; }
+      .writing-card { min-height: 220px; }
+      footer .wrap { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .project { transition: none; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Latent Vibe home"><span class="mark" aria-hidden="true">v</span><span>Latent Vibe</span></a>
+      <nav aria-label="Main navigation"><a href="#products">Products</a><a href="#writing">Ideas &amp; publications</a></nav>
+    </div>
+  </header>
+  <main id="top">
+    <div class="hero wrap">
+      <div class="eyebrow">Independent product studio</div>
+      <h1>Latent<br><em>Vibe.</em></h1>
+      <div class="hero-bottom"><p>A place for ideas, publications, and useful software. Each product has its own home; this is where the work connects.</p><span class="hero-symbol" aria-hidden="true">↗</span></div>
+    </div>
+    <div class="band"><div class="wrap"><span>Ideas become experiments. Experiments become products.</span><span>Explore the work below</span></div></div>
+    <section class="section" id="products">
+      <div class="wrap">
+        <div class="section-heading"><div class="section-number">01 / Products</div><div><h2>Built to explore.</h2><p class="section-intro">Independent tools and experiments live at their own addresses under latentvibe.com.</p></div></div>
+        <a class="project" href="https://inference-viz.latentvibe.com/" aria-label="Open Inference Ballpark at inference-viz.latentvibe.com">
+          <div class="project-label"><span class="section-number">Featured product</span><span class="number" aria-hidden="true">01</span></div>
+          <div><h3>Inference Ballpark</h3><p>Explore how model architecture and hardware choices affect inference throughput.</p><div class="domain">inference-viz.latentvibe.com ↗</div></div>
+        </a>
+      </div>
+    </section>
+    <section class="section" id="writing">
+      <div class="wrap">
+        <div class="section-heading"><div class="section-number">02 / Writing</div><div><h2>Notes from the work.</h2><p class="section-intro">Ideas and publications will have a home here as they are ready to share.</p></div></div>
+        <div class="writing-grid">
+          <div class="writing-card"><div><h3>Ideas</h3><p>Questions, working notes, and early thinking.</p></div><span class="status">No entries yet</span></div>
+          <div class="writing-card"><div><h3>Publications</h3><p>Longer pieces and published work.</p></div><span class="status">No entries yet</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap"><strong>Latent Vibe</strong><p>Independent ideas, writing, and products.</p></div></footer>
+</body>
+</html>
